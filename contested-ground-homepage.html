@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contested Ground — A research atlas of opposition to Muslim community-building in the U.S.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#182420;          /* deep pine ink — dominant dark */
+    --ink-2:#22322c;
+    --paper:#E9E4D6;        /* aged survey paper */
+    --paper-2:#F2EEE3;      /* lifted card paper */
+    --line:#C0B9A4;         /* survey linework */
+    --mute:#6C6653;         /* captions / coordinates */
+    --verdigris:#3E6B5A;    /* realized / approved */
+    --oxide:#9C3B2E;        /* blocked / destroyed */
+    --gold:#A9863C;         /* litigated / process */
+    --focus:#3E6B5A;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Public Sans",system-ui,sans-serif;
+    font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+  a{color:inherit}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--mute);
+  }
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;line-height:1.02;margin:0;letter-spacing:-.01em}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;background:var(--ink);color:var(--paper);
+    overflow:hidden;border-bottom:1px solid #0d1512;
+  }
+  .hero svg#plot{position:absolute;inset:0;width:100%;height:100%;opacity:.9}
+  .hero-inner{
+    position:relative;z-index:2;max-width:var(--maxw);margin:0 auto;
+    padding:120px 28px 88px;min-height:96vh;display:flex;flex-direction:column;justify-content:center;
+  }
+  .hero .eyebrow{color:#B9C4B1}
+  .hero h1{
+    font-size:clamp(3.1rem,9vw,7.4rem);font-weight:600;color:#F4F0E4;
+    margin:.18em 0 .32em;max-width:14ch;
+  }
+  .hero .lede{
+    font-family:"Fraunces",serif;font-weight:400;font-size:clamp(1.2rem,2.5vw,1.7rem);
+    line-height:1.42;max-width:34ch;color:#DFDAC9;
+  }
+  .hero .keyline{
+    margin-top:52px;display:flex;flex-wrap:wrap;gap:0;border-top:1px solid #35443d;
+    max-width:820px;
+  }
+  .hero .keyline .k{
+    padding:18px 26px 18px 0;margin-right:26px;border-right:1px solid #35443d;
+  }
+  .hero .keyline .k:last-child{border-right:none}
+  .hero .keyline .num{font-family:"Fraunces",serif;font-size:2rem;font-weight:600;color:#F4F0E4;display:block;line-height:1}
+  .hero .keyline .lab{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#9FA99A;margin-top:7px;display:block}
+  .scrollcue{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:3;
+    font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.3em;color:#7E8A7C;text-transform:uppercase}
+  .plotcaption{position:absolute;right:28px;bottom:22px;z-index:3;max-width:230px;text-align:right;
+    font-family:"IBM Plex Mono",monospace;font-size:10.5px;line-height:1.7;letter-spacing:.04em;color:#8B9689}
+
+  /* ---------- SCOPE / KEY ---------- */
+  .scope{padding:66px 0 20px}
+  .scope .eyebrow{display:block;margin-bottom:26px}
+  .scope-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+  .scope-cell{background:var(--paper);padding:26px 22px}
+  .scope-cell .n{font-family:"Fraunces",serif;font-size:2.7rem;font-weight:600;line-height:1;display:block}
+  .scope-cell .l{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:12px;display:block}
+  .scope-note{font-size:15px;color:var(--mute);margin:26px 0 0;max-width:62ch}
+
+  /* ---------- INTRO ---------- */
+  .intro{padding:70px 0 40px;border-top:1px solid var(--line);margin-top:56px}
+  .intro-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:60px;align-items:start}
+  .intro h2{font-size:clamp(1.9rem,4vw,2.9rem);max-width:16ch}
+  .intro p{margin:0 0 18px;font-size:1.06rem}
+  .intro p:first-child{font-size:1.16rem;color:var(--ink)}
+  .intro .side-label{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--verdigris);margin-bottom:16px}
+
+  /* ---------- CASES ---------- */
+  .cases{padding:30px 0 40px}
+  .cases-head{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:0}
+  .cases-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem)}
+  .cases-head .count{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;color:var(--mute);text-transform:uppercase}
+
+  .case{
+    display:grid;grid-template-columns:96px minmax(0,1fr);gap:0;
+    border-bottom:1px solid var(--line);padding:44px 0;
+  }
+  .case .rail{
+    border-right:1px solid var(--line);padding-right:20px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;line-height:1.7;color:var(--mute);
+  }
+  .case .rail .idx{display:block;font-size:2rem;color:var(--ink);font-weight:500;margin-bottom:10px;letter-spacing:-.02em}
+  .case .rail .coord{display:block;letter-spacing:.02em}
+  .case .body{padding-left:34px}
+  .case .meta{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin-bottom:14px}
+  .case .tag{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+  .case h3{font-size:clamp(1.5rem,3vw,2.1rem);margin-bottom:6px}
+  .case .place{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;color:var(--verdigris);text-transform:uppercase;margin-bottom:16px}
+  .case p{margin:0;max-width:64ch;font-size:1.04rem;color:#2b352f}
+  .case .foot{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center}
+  .case .opp{font-size:13.5px;color:var(--mute)}
+  .case .opp b{color:var(--ink);font-weight:600}
+
+  /* outcome stamp — the signature element */
+  .stamp{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+    padding:8px 14px;border:2px solid currentColor;border-radius:2px;
+    position:relative;transform:rotate(-1.4deg);
+  }
+  .stamp::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
+  .stamp.built{color:var(--verdigris)}
+  .stamp.settled{color:var(--gold)}
+  .stamp.relocated{color:var(--verdigris)}
+  .stamp.blocked{color:var(--oxide)}
+  .stamp.destroyed{color:var(--oxide)}
+
+  /* ---------- PATTERN ---------- */
+  .pattern{background:var(--ink);color:var(--paper);padding:88px 0;margin-top:40px}
+  .pattern .eyebrow{color:#B9C4B1;display:block;margin-bottom:26px}
+  .pattern h2{color:#F4F0E4;font-size:clamp(1.9rem,4vw,3rem);max-width:20ch;margin-bottom:40px}
+  .pattern-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+  .pattern-grid .p .ph{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9FA99A;padding-bottom:12px;border-bottom:1px solid #35443d;margin-bottom:16px;display:block}
+  .pattern-grid .p p{margin:0;color:#DAD5C4;font-size:1rem}
+  .pattern-grid .p .big{font-family:"Fraunces",serif;font-size:2.4rem;color:#F4F0E4;font-weight:600;display:block;line-height:1;margin-bottom:8px}
+
+  /* ---------- EXPLORE / CTA ---------- */
+  .explore{padding:80px 0}
+  .explore-inner{border:1px solid var(--line);background:var(--paper-2);padding:56px 48px;position:relative}
+  .explore .eyebrow{display:block;margin-bottom:18px}
+  .explore h2{font-size:clamp(2rem,4.5vw,3.2rem);max-width:16ch;margin-bottom:20px}
+  .explore p{max-width:56ch;margin:0 0 32px;color:#2b352f}
+  .btn{
+    display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--paper);
+    font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+    padding:16px 26px;text-decoration:none;border:2px solid var(--ink);transition:background .15s,color .15s;
+  }
+  .btn:hover,.btn:focus-visible{background:transparent;color:var(--ink)}
+  .btn .arrow{font-size:16px}
+  .map-slot{margin-top:44px;border:1px dashed var(--line);background:
+     repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(62,107,90,.05) 12px,rgba(62,107,90,.05) 13px);
+     aspect-ratio:16/7;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
+  .map-slot .ms{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;color:var(--mute);max-width:44ch;line-height:1.8}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:#9FA99A;padding:44px 0;border-top:1px solid #0d1512}
+  footer .frow{display:flex;flex-wrap:wrap;gap:24px 48px;justify-content:space-between;align-items:baseline}
+  footer .brand{font-family:"Fraunces",serif;font-size:1.3rem;color:#F4F0E4}
+  footer p{margin:6px 0 0;font-family:"IBM Plex Mono",monospace;font-size:11px;line-height:1.9;letter-spacing:.04em}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  :focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+
+  /* responsive */
+  @media (max-width:860px){
+    .scope-grid{grid-template-columns:repeat(2,1fr)}
+    .intro-grid{grid-template-columns:1fr;gap:28px}
+    .pattern-grid{grid-template-columns:1fr;gap:30px}
+    .case{grid-template-columns:1fr}
+    .case .rail{border-right:none;border-bottom:1px solid var(--line);padding:0 0 14px;margin-bottom:20px;display:flex;gap:18px;align-items:baseline}
+    .case .rail .idx{margin-bottom:0}
+    .case .body{padding-left:0}
+    .explore-inner{padding:40px 26px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <svg id="plot" viewBox="0 0 1000 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+  <div class="hero-inner">
+    <span class="eyebrow">A research atlas · United States · 1983&ndash;2025</span>
+    <h1>Contested Ground</h1>
+    <p class="lede">When American Muslims move to build a mosque, a cemetery, or a community center, the fight often begins at the zoning counter. This is a record of where&mdash;and how.</p>
+    <div class="keyline">
+      <div class="k"><span class="num">174</span><span class="lab">documented cases</span></div>
+      <div class="k"><span class="num">33</span><span class="lab">states</span></div>
+      <div class="k"><span class="num">42</span><span class="lab">years</span></div>
+      <div class="k"><span class="num">24</span><span class="lab">federal civil-rights actions</span></div>
+    </div>
+  </div>
+  <div class="plotcaption">Each mark is one documented case, plotted by state.<br>Five in oxide are featured below.</div>
+  <div class="scrollcue">Scroll ↓</div>
+</header>
+
+<!-- ============ SCOPE ============ -->
+<section class="scope">
+  <div class="wrap">
+    <span class="eyebrow">What the atlas holds</span>
+    <div class="scope-grid reveal">
+      <div class="scope-cell"><span class="n">125</span><span class="l">Mosques</span></div>
+      <div class="scope-cell"><span class="n">29</span><span class="l">Cemeteries</span></div>
+      <div class="scope-cell"><span class="n">9</span><span class="l">Community centers</span></div>
+      <div class="scope-cell"><span class="n">11</span><span class="l">Schools, clinics &amp; other</span></div>
+    </div>
+    <p class="scope-note">Cases were identified from civil-liberties reporting, court and zoning records, and news coverage, then catalogued with a controlled vocabulary describing the project, the opposition it met, and how it was resolved.</p>
+  </div>
+</section>
+
+<!-- ============ INTRO ============ -->
+<section class="intro">
+  <div class="wrap intro-grid reveal">
+    <div>
+      <span class="side-label">The pattern</span>
+      <h2>A house of worship is rarely refused for being one.</h2>
+    </div>
+    <div>
+      <p>It is refused for traffic. For parking. For the size of a dome, the height of a minaret, the loss of a tax base, the character of a neighborhood, the safety of an aquifer.</p>
+      <p>Across four decades, the same objections recur from Idaho to Massachusetts &mdash; sometimes sincere, sometimes a lawful-sounding cover for something else. In case after case, the record shows a permit granted to a church quietly denied to a mosque next door.</p>
+      <p>The cases below are not the loudest. They are the ones that show the range: what communities proposed, what met them, and where the ground finally settled.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CASES ============ -->
+<section class="cases">
+  <div class="wrap">
+    <div class="cases-head reveal">
+      <h2>Five cases</h2>
+      <span class="count">Selected · 05 of 174</span>
+    </div>
+
+    <!-- 1 -->
+    <article class="case reveal">
+      <div class="rail">
+        <span class="idx">01</span>
+        <span class="coord">33.55°N<br>83.86°W</span>
+        <span class="coord" style="margin-top:10px;display:block">EST. 2016</span>
+      </div>
+      <div class="body">
+        <div class="meta">
+          <span class="tag">Cemetery &amp; planned mosque</span>
+          <span class="stamp built">Built</span>
+        </div>
+        <h3>A cemetery, a moratorium, and a militia</h3>
+        <div class="place">Newton County, Georgia</div>
+        <p>A Muslim community's plan for a cemetery and future mosque on rural land drew a county moratorium on new houses of worship and national coverage. One commission meeting was called off over security concerns about an armed demonstration outside. The county later required hearings for large religious sites &mdash; but the cemetery opened in 2017.</p>
+        <div class="foot">
+          <span class="opp"><b>Opposition:</b> public campaign · zoning moratorium · intimidation</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="case reveal">
+      <div class="rail">
+        <span class="idx">02</span>
+        <span class="coord">37.55°N<br>77.40°W</span>
+        <span class="coord" style="margin-top:10px;display:block">EST. 2008</span>
+      </div>
+      <div class="body">
+        <div class="meta">
+          <span class="tag">Mosque &amp; community center</span>
+          <span class="stamp settled">Litigated &amp; settled</span>
+        </div>
+        <h3>The county that had never said no to a church</h3>
+        <div class="place">Islamic Center of Henrico, Virginia</div>
+        <p>Henrico County denied a rezoning for a 10,000-square-foot mosque on long-vacant commercial land, citing noise and traffic. The center sued; the U.S. Department of Justice investigated and filed its own federal suit, noting the county had never once denied a zoning application from a Christian church. The case settled in 2011 and the rezoning was approved.</p>
+        <div class="foot">
+          <span class="opp"><b>Opposition:</b> administrative denial · federal RLUIPA litigation</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="case reveal">
+      <div class="rail">
+        <span class="idx">03</span>
+        <span class="coord">30.39°N<br>97.90°W</span>
+        <span class="coord" style="margin-top:10px;display:block">EST. 2017</span>
+      </div>
+      <div class="body">
+        <div class="meta">
+          <span class="tag">Mosque · under construction</span>
+          <span class="stamp destroyed">Destroyed</span>
+        </div>
+        <h3>Burned before it opened</h3>
+        <div class="place">Lake Travis, Texas</div>
+        <p>A mosque set to open in the spring never did. The site was vandalized, and months later the partially built structure burned to the ground under suspicious circumstances &mdash; there were no gas or electric hookups on the property. This is the far end of the spectrum the atlas records: where objection crosses into arson.</p>
+        <div class="foot">
+          <span class="opp"><b>Opposition:</b> vandalism · suspected arson</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="case reveal">
+      <div class="rail">
+        <span class="idx">04</span>
+        <span class="coord">40.58°N<br>74.10°W</span>
+        <span class="coord" style="margin-top:10px;display:block">EST. 2010</span>
+      </div>
+      <div class="body">
+        <div class="meta">
+          <span class="tag">Mosque &amp; community center</span>
+          <span class="stamp relocated">Relocated</span>
+        </div>
+        <h3>Turned away from a convent, welcomed by a temple</h3>
+        <div class="place">Staten Island, New York</div>
+        <p>A plan to buy a Catholic convent and convert it into a mosque met rallies and fears ranging from traffic to terrorism; the parish board rejected the sale. The community regrouped, bought a former Hindu temple nearby instead, and renovated it. The center opened &mdash; a few miles from where it was first refused.</p>
+        <div class="foot">
+          <span class="opp"><b>Opposition:</b> public campaign · rallies · sale blocked</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5 -->
+    <article class="case reveal">
+      <div class="rail">
+        <span class="idx">05</span>
+        <span class="coord">42.24°N<br>83.75°W</span>
+        <span class="coord" style="margin-top:10px;display:block">EST. 2011</span>
+      </div>
+      <div class="body">
+        <div class="meta">
+          <span class="tag">Islamic school</span>
+          <span class="stamp settled">Litigated &amp; settled</span>
+        </div>
+        <h3>Five years to build a schoolhouse</h3>
+        <div class="place">Pittsfield Township, Michigan</div>
+        <p>The township denied the Michigan Islamic Academy's rezoning for a school on vacant land, citing traffic, after heavily attended hearings. CAIR sued in 2012; the Department of Justice filed a separate RLUIPA suit in 2015. Both settled in 2016 for roughly $1.7 million, clearing the way for the project.</p>
+        <div class="foot">
+          <span class="opp"><b>Opposition:</b> administrative denial · public campaign · federal litigation</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ PATTERN ============ -->
+<section class="pattern">
+  <div class="wrap">
+    <span class="eyebrow">Read across the record</span>
+    <h2>The same three forces show up again and again.</h2>
+    <div class="pattern-grid reveal">
+      <div class="p">
+        <span class="ph">The battleground</span>
+        <span class="big">Zoning</span>
+        <p>Most cases are decided not at a ballot box but at a planning commission or board of adjustment &mdash; where "traffic" and "parking" can carry a great deal of weight.</p>
+      </div>
+      <div class="p">
+        <span class="ph">The backstop</span>
+        <span class="big">24 cases</span>
+        <p>drew federal civil-rights action. RLUIPA &mdash; the Religious Land Use and Institutionalized Persons Act &mdash; has repeatedly turned a local denial into a settlement and, eventually, a building.</p>
+      </div>
+      <div class="p">
+        <span class="ph">The range</span>
+        <span class="big">Words to fire</span>
+        <p>Opposition runs from petitions and public comment to vandalism, threats, and arson. The atlas tags each so the pattern &mdash; and its extremes &mdash; can be seen whole.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPLORE ============ -->
+<section class="explore">
+  <div class="wrap">
+    <div class="explore-inner reveal">
+      <span class="eyebrow">Explore the atlas</span>
+      <h2>Every case, on the map.</h2>
+      <p>The five above are a way in. The full atlas plots all 174 cases &mdash; filter by state, project type, decade, opposition tactic, and outcome, and open any case to its sources.</p>
+      <a class="btn" href="#">Open the interactive map <span class="arrow">→</span></a>
+      <div class="map-slot" role="img" aria-label="Placeholder for the embedded interactive map">
+        <span class="ms">[ Embed the ArcGIS StoryMaps / web map here ]<br>Replace this panel with your live map iframe.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap frow">
+    <div>
+      <div class="brand">Contested Ground</div>
+      <p>A research atlas of opposition to Muslim community-building in the United States.</p>
+    </div>
+    <div>
+      <p>Data catalogued in Omeka · 174 cases · 1983&ndash;2025<br>
+      Case counts current as of this draft · Figures are illustrative placeholders for review<br>
+      © 2026 · Research use</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---- Hero case-distribution plot (real per-state counts) ----
+  var counts = {AR:1,AZ:1,CA:10,CO:1,CT:3,DE:1,FL:11,GA:11,ID:1,IL:20,IN:2,KY:4,MA:5,MD:4,ME:1,MI:10,MN:12,MS:3,NC:1,NE:1,NH:1,NJ:13,NV:1,NY:16,OH:2,OK:3,PA:5,SC:1,TN:6,TX:5,VA:12,WA:1,WI:5};
+  // approx state centroids [lon, lat]
+  var cen = {AR:[-92.4,34.8],AZ:[-111.7,34.3],CA:[-119.7,37.2],CO:[-105.5,39.0],CT:[-72.7,41.6],DE:[-75.5,39.0],FL:[-81.7,28.6],GA:[-83.4,32.6],ID:[-114.6,44.4],IL:[-89.2,40.0],IN:[-86.3,39.9],KY:[-85.3,37.5],MA:[-71.8,42.3],MD:[-76.8,39.0],ME:[-69.2,45.4],MI:[-84.5,43.6],MN:[-94.3,46.3],MS:[-89.7,32.7],NC:[-79.4,35.6],NE:[-99.8,41.5],NH:[-71.6,43.7],NJ:[-74.5,40.1],NV:[-116.6,39.3],NY:[-75.3,42.9],OH:[-82.8,40.2],OK:[-97.5,35.5],PA:[-77.8,40.9],SC:[-80.9,33.9],TN:[-86.3,35.8],TX:[-99.3,31.3],VA:[-78.8,37.7],WA:[-120.4,47.4],WI:[-89.9,44.6]};
+  // featured (oxide) states, one dot each highlighted
+  var featured = {GA:1,VA:1,TX:1,NY:1,MI:1};
+  var W=1000,H=560, L=-125,Rt=-66, T=50, B=24;
+  function px(lon){ return (lon-L)/(Rt-L)*W; }
+  function py(lat){ return (T-lat)/(T-B)*H; }
+  var svg = document.getElementById('plot');
+  if(!svg) return;
+  var ns="http://www.w3.org/2000/svg";
+  // faint baseline hairlines (latitude bands) for a survey feel
+  for(var yb=0; yb<=5; yb++){
+    var ly=document.createElementNS(ns,'line');
+    var yy=(yb/5)*H;
+    ly.setAttribute('x1',0);ly.setAttribute('x2',W);ly.setAttribute('y1',yy);ly.setAttribute('y2',yy);
+    ly.setAttribute('stroke','#2b3b34');ly.setAttribute('stroke-width','1');
+    svg.appendChild(ly);
+  }
+  var dots=[];
+  var seed=7;
+  function rnd(){ seed=(seed*9301+49297)%233280; return seed/233280; }
+  Object.keys(counts).forEach(function(st){
+    var c=cen[st]; if(!c) return;
+    var n=counts[st];
+    var cx=px(c[0]), cy=py(c[1]);
+    var featIdx = featured[st]? Math.floor(n/2) : -1;
+    for(var i=0;i<n;i++){
+      var ang=rnd()*Math.PI*2, rad=rnd()*Math.min(26,8+n*1.4);
+      var isFeat = (i===featIdx);
+      dots.push({x:cx+Math.cos(ang)*rad, y:cy+Math.sin(ang)*rad, feat:isFeat});
+    }
+  });
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  dots.forEach(function(d,i){
+    var el=document.createElementNS(ns,'circle');
+    el.setAttribute('cx',d.x.toFixed(1));
+    el.setAttribute('cy',d.y.toFixed(1));
+    el.setAttribute('r', d.feat? 5.4 : 2.7);
+    el.setAttribute('fill', d.feat? '#9C3B2E' : '#3E6B5A');
+    el.setAttribute('opacity', d.feat? '0' : '0');
+    if(d.feat){ el.setAttribute('stroke','#E9E4D6'); el.setAttribute('stroke-width','1'); }
+    svg.appendChild(el);
+    if(reduce){ el.setAttribute('opacity', d.feat?'1':'.62'); return; }
+    var delay = 200 + i*7;
+    setTimeout(function(){
+      el.style.transition='opacity .6s ease';
+      el.setAttribute('opacity', d.feat?'1':'.6');
+    }, delay);
+  });
+
+  // ---- scroll reveal ----
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.14});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
